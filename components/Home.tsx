@@ -4,6 +4,7 @@ import { Download, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Section } from '../App';
 import { EXPERIENCE_BY_ROLE_DATA, COMPANY_COLORS } from '../constants';
+import profileImg from '../assets/profile.jpg';
 
 interface HomeProps {
   setActiveSection: (section: Section) => void;
@@ -80,9 +81,9 @@ const Home: React.FC<HomeProps> = ({ setActiveSection }) => {
           className="lg:col-span-3 flex flex-col items-center gap-4"
           variants={itemVariants}
         >
-            <div className="w-32 h-32 lg:w-48 lg:h-48 mb-4 p-1 rounded-full bg-gradient-to-br from-accent-magenta to-accent-cyan">
+            <div className="w-32 h-32 lg:w-48 lg:h-48 mb-4 p-1 rounded-full bg-gradient-to-br from-accent-magenta to-accent-cyan shadow-glow-cyan">
                 <img
-                    src="https://i.pravatar.cc/300?u=samoko"
+                    src={profileImg}
                     alt="Samoko Jonathan Moreno López"
                     className="rounded-full object-cover w-full h-full border-4 border-primary-light dark:border-primary-dark"
                 />
