@@ -18,7 +18,7 @@ const Contact: React.FC = () => {
     setFeedbackMsg('');
 
     try {
-      const response = await fetch('https://formspree.io/f/samoko.moreno@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/samoko.moreno@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,17 +29,30 @@ const Contact: React.FC = () => {
           email: formData.email,
           message: formData.message,
           _subject: `Nuevo mensaje de contacto desde tu CV Web - ${formData.name}`,
+          _template: 'table',
+          _captcha: 'false'
         }),
       });
 
-      if (response.ok) {
+      const data = await response.json().catch(() => null);
+
+      if (response.ok && (data?.success === 'true' || data?.success === true)) {
         setStatus('success');
-        setFeedbackMsg('¡Mensaje enviado con éxito! Te responderé lo más pronto posible.');
+        setFeedbackMsg('¡Mensaje enviado con éxito a samoko.moreno@gmail.com! Te responderé lo más pronto posible.');
+        setFormData({ name: '', email: '', message: '' });
+      } else if (data?.message && data.message.includes('needs Activation')) {
+        setStatus('success');
+        setFeedbackMsg('¡Mensaje procesado! Si es la primera vez, FormSubmit ha enviado un correo de confirmación a samoko.moreno@gmail.com para activar las alertas.');
         setFormData({ name: '', email: '', message: '' });
       } else {
-        const data = await response.json().catch(() => null);
-        setStatus('error');
-        setFeedbackMsg(data?.error || 'Hubo un error al procesar el envío. Puedes escribirme también por WhatsApp.');
+        // Fallback directly to mailto
+        window.open(
+          `mailto:samoko.moreno@gmail.com?subject=Contacto desde CV Web - ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`De: ${formData.name} (${formData.email})\n\nMensaje:\n${formData.message}`)}`,
+          '_blank'
+        );
+        setStatus('success');
+        setFeedbackMsg('Se preparó el mensaje en tu aplicación de correo para enviarlo a samoko.moreno@gmail.com.');
+        setFormData({ name: '', email: '', message: '' });
       }
     } catch (err) {
       console.error('Error submitting form:', err);
@@ -48,7 +61,8 @@ const Contact: React.FC = () => {
         '_blank'
       );
       setStatus('success');
-      setFeedbackMsg('Se abrió tu cliente de correo para enviar el mensaje a samoko.moreno@gmail.com.');
+      setFeedbackMsg('Se abrió tu aplicación de correo para enviar el mensaje directamente a samoko.moreno@gmail.com.');
+      setFormData({ name: '', email: '', message: '' });
     }
   };
 
