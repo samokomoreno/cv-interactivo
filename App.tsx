@@ -63,7 +63,7 @@ const App: React.FC = () => {
           theme={theme}
           toggleTheme={toggleTheme}
         />
-        <main className="flex-grow px-6 md:px-12 lg:px-24 xl:px-48 py-20 max-w-7xl w-full mx-auto">
+        <main className="flex-grow px-3 sm:px-6 md:px-10 lg:px-16 py-16 sm:py-20 max-w-7xl w-full mx-auto">
           {renderSection()}
         </main>
         <Footer />

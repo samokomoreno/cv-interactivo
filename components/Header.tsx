@@ -16,10 +16,13 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection, theme,
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary-light/80 dark:bg-primary-dark/80 backdrop-blur-md shadow-md transition-colors duration-300">
-      <nav className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-48 py-4 flex justify-between items-center max-w-7xl">
-        <div className="text-xl font-bold text-accent-magenta cursor-pointer" onClick={() => setActiveSection('Inicio')}>
-          S.M.
-        </div>
+      <nav className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-24 py-3 sm:py-4 flex justify-between items-center max-w-7xl">
+        <button 
+          onClick={() => setActiveSection('Inicio')}
+          className="text-sm sm:text-base font-semibold text-text-light-main dark:text-text-dark-main hover:text-accent-cyan transition-colors"
+        >
+          Samoko Moreno
+        </button>
         <div className="hidden md:flex items-center space-x-6">
           {navItems.map((item) => (
             <button

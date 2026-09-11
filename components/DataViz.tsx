@@ -31,28 +31,28 @@ const DataViz: React.FC = () => {
       <p className="text-center text-text-light-secondary dark:text-text-dark-secondary mb-12">
         Evolución de roles a lo largo del tiempo, mostrando el cambio de enfoque en mi carrera.
       </p>
-      <div className="w-full h-96 p-4 bg-secondary-light dark:bg-primary-dark rounded-lg shadow-lg">
+      <div className="w-full h-80 sm:h-96 p-2 sm:p-4 bg-secondary-light dark:bg-primary-dark rounded-xl shadow-lg">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={CAREER_EVOLUTION_DATA}
             margin={{
-              top: 5, right: 30, left: 20, bottom: 5,
+              top: 10, right: 15, left: 0, bottom: 5,
             }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="hsla(210, 29%, 55%, 0.1)" />
-            <XAxis dataKey="year" stroke="#8892b0" dy={10} />
+            <XAxis dataKey="year" stroke="#8892b0" dy={5} tick={{ fontSize: 12 }} />
             <YAxis 
               stroke="#8892b0"
               ticks={[1, 2, 3]}
               domain={[0, 4]}
               tickFormatter={(value) => {
-                if (value === 1) return 'Soporte/Sistemas';
+                if (value === 1) return 'Soporte';
                 if (value === 2) return 'Desarrollo';
                 if (value === 3) return 'Gestión';
                 return '';
               }}
-              width={100}
-              dx={-10}
+              width={75}
+              tick={{ fontSize: 11 }}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend formatter={(value) => "Tipo de Rol"} wrapperStyle={{ color: '#8892b0' }}/>

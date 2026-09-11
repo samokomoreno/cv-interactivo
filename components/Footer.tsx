@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.5 }}
     >
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-48 flex flex-col md:flex-row justify-between items-center text-center md:text-left max-w-7xl">
+      <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-16 flex flex-col md:flex-row justify-between items-center text-center md:text-left max-w-7xl">
         <p className="text-sm text-text-light-secondary dark:text-text-dark-secondary">
           &copy; {new Date().getFullYear()} Samoko Jonathan Moreno López. Todos los derechos reservados.
         </p>

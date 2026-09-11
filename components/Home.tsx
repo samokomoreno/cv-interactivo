@@ -37,7 +37,7 @@ const Home: React.FC<HomeProps> = ({ setActiveSection }) => {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
         <div className="lg:col-span-2 flex flex-col gap-4 text-center md:text-left">
           <motion.h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-light-main dark:text-text-dark-main"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-text-light-main dark:text-text-dark-main leading-tight"
             variants={itemVariants}
           >
             Samoko Jonathan Moreno López
